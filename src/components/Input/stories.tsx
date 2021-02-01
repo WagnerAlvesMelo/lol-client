@@ -10,6 +10,5 @@ export const Basic: Story<InputProps> = (args) => <Input {...args} />
 
 export const WithError: Story<InputProps> = (args) => <Input {...args} />
 WithError.args = {
-  ...args,
-  error: true
+  error: 'Um erro ocorreu'
 }

@@ -1,10 +1,26 @@
-import styled, { css } from 'styled-components'
+import styled, { css, DefaultTheme } from 'styled-components'
 import { InputProps } from '.'
 
-export const Wrapper = styled.div``
+const inputModifiers = {
+  error: (theme: DefaultTheme) => css`
+    border: 1px solid ${theme.colors.red};
+  `
+}
+export const Wrapper = styled.div`
+  ${({ theme }) => css`
+    span {
+      font-size: ${theme.font.sizes.small};
+      color: ${theme.colors.red};
+    }
+  `}
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
 
 export const Input = styled.input<InputProps>`
-  ${({ theme }) => css`
+  ${({ theme, error }) => css`
     width: min(30rem, 100%);
     height: 4.8rem;
     border: none;
@@ -18,5 +34,7 @@ export const Input = styled.input<InputProps>`
     &::placeholder {
       color: ${theme.colors.primary};
     }
+
+    ${error && inputModifiers.error(theme)}
   `}
 `

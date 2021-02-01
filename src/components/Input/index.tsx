@@ -1,30 +1,46 @@
+import { useState } from 'react'
 import * as S from './styles'
 
 export interface InputProps {
-  value: string
-  type: string
-  placeholder: string
+  value?: string
+  name: string
+  type?: string
+  placeholder?: string
   error?: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onInput?: (value: string) => void
 }
 
 const Input = ({
-  value,
+  value = '',
   type = 'text',
   placeholder,
   error,
-  onChange
-}: InputProps) => (
-  <S.Wrapper>
-    <S.Input
-      type={type}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-      error={error}
-    />
-    {error && <span>{error}</span>}
-  </S.Wrapper>
-)
+  name,
+  onInput
+}: InputProps) => {
+  const [inputValue, setInputValue] = useState(value)
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.currentTarget.value
+    setInputValue(newValue)
+
+    !!onInput && onInput(newValue)
+  }
+
+  return (
+    <S.Wrapper>
+      <S.Input
+        aria-label="TextField"
+        type={type}
+        value={inputValue}
+        placeholder={placeholder}
+        onChange={onChange}
+        error={error}
+        name={name}
+      />
+      {error && <span>{error}</span>}
+    </S.Wrapper>
+  )
+}
 
 export default Input

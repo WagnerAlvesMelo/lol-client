@@ -25,8 +25,9 @@ export default {
   colors: {
     primary: '#303233',
     secondary: '#EDEDED',
-    mainBg: '#06092B',
-    label: 'gray'
+    mainBg: 'white',
+    label: 'gray',
+    red: '#FF3232'
   },
   spacings: {
     xxsmall: '0.8rem',
