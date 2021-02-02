@@ -15,11 +15,13 @@ describe('<LoginButton />', () => {
 
   it('verify if button action is triggered', async () => {
     const onClick = jest.fn()
+
     renderWithTheme(<LoginButton onClick={onClick} />)
 
     expect(onClick).not.toHaveBeenCalled()
 
     userEvent.click(screen.getByRole('button'))
+
     await waitFor(() => expect(onClick).toHaveBeenCalledTimes(1))
   })
 })

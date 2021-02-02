@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { FieldError } from 'react-hook-form'
+
 import * as S from './styles'
 
 export interface InputProps {
@@ -6,36 +7,25 @@ export interface InputProps {
   name: string
   type?: string
   placeholder?: string
-  error?: string
-  onInput?: (value: string) => void
+  error?: string | FieldError
+  register?: (instance: HTMLInputElement | null) => void
 }
 
 const Input = ({
-  value = '',
   type = 'text',
   placeholder,
   error,
   name,
-  onInput
+  register
 }: InputProps) => {
-  const [inputValue, setInputValue] = useState(value)
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget.value
-    setInputValue(newValue)
-
-    !!onInput && onInput(newValue)
-  }
-
   return (
     <S.Wrapper>
       <S.Input
         aria-label="TextField"
         type={type}
-        value={inputValue}
         placeholder={placeholder}
-        onChange={onChange}
         error={error}
+        ref={register}
         name={name}
       />
       {error && <span>{error}</span>}
