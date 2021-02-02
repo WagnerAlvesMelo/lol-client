@@ -31,4 +31,26 @@ describe('<Form />', () => {
 
     expect(mockOnSubmit).toBeCalled()
   })
+
+  it('should show error on submit', async () => {
+    const mockOnSubmit = jest.fn()
+    const { getByPlaceholderText, getByRole } = renderWithTheme(
+      <Form onSubmit={mockOnSubmit} />
+    )
+
+    await act(async () => {
+      fireEvent.change(getByPlaceholderText('password'), {
+        target: { value: '123' }
+      })
+    })
+
+    await act(async () => {
+      fireEvent.click(getByRole('button'))
+    })
+
+    expect(mockOnSubmit).not.toBeCalled()
+    expect(
+      screen.queryByText(/username is a required field/i)
+    ).toBeInTheDocument()
+  })
 })

@@ -6,4 +6,10 @@ export default {
   component: Form
 } as Meta
 
-export const Default: Story = () => <Form onSubmit={() => alert('a')} />
+export const Default: Story = () => (
+  <Form
+    onSubmit={(data) => {
+      console.log(data)
+    }}
+  />
+)

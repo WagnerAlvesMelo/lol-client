@@ -11,7 +11,7 @@ type FormData = {
 }
 
 type FormTypes = {
-  onSubmit?: () => void | SubmitHandler<FormData>
+  onSubmit?: SubmitHandler<FormData>
 }
 
 export const loginSchema = yup.object().shape({

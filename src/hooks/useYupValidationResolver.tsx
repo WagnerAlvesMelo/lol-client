@@ -21,7 +21,7 @@ export const useYupValidationResolver = (validationSchema: AnyObjectSchema) =>
               ...allErrors,
               // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               [currentError.path!]: {
-                type: currentError.type ?? 'validation',
+                type: currentError.type,
                 message: currentError.message
               }
             }),

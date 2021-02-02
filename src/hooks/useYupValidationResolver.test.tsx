@@ -30,7 +30,7 @@ test('should use pass if validation is ok', async () => {
   const { result } = renderHook(() =>
     useYupValidationResolver(schema)({
       username: 'a',
-      password: 123
+      password: '123'
     })
   )
 
