@@ -12,21 +12,21 @@ describe('<Form />', () => {
 
   it('should send values on submit', async () => {
     const mockOnSubmit = jest.fn()
-    const { getByPlaceholderText, getByRole } = renderWithTheme(
+    const { getByPlaceholderText, getByLabelText } = renderWithTheme(
       <Form onSubmit={mockOnSubmit} />
     )
 
     await act(async () => {
-      fireEvent.change(getByPlaceholderText('username'), {
+      fireEvent.change(getByPlaceholderText(/username/i), {
         target: { value: 'aaa' }
       })
-      fireEvent.change(getByPlaceholderText('password'), {
+      fireEvent.change(getByPlaceholderText(/password/i), {
         target: { value: '123' }
       })
     })
 
     await act(async () => {
-      fireEvent.click(getByRole('button'))
+      fireEvent.click(getByLabelText('submit-button'))
     })
 
     expect(mockOnSubmit).toBeCalled()
@@ -34,18 +34,18 @@ describe('<Form />', () => {
 
   it('should show error on submit', async () => {
     const mockOnSubmit = jest.fn()
-    const { getByPlaceholderText, getByRole } = renderWithTheme(
+    const { getByPlaceholderText, getByLabelText } = renderWithTheme(
       <Form onSubmit={mockOnSubmit} />
     )
 
     await act(async () => {
-      fireEvent.change(getByPlaceholderText('password'), {
+      fireEvent.change(getByPlaceholderText(/password/i), {
         target: { value: '123' }
       })
     })
 
     await act(async () => {
-      fireEvent.click(getByRole('button'))
+      fireEvent.click(getByLabelText('submit-button'))
     })
 
     expect(mockOnSubmit).not.toBeCalled()

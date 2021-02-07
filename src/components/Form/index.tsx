@@ -4,6 +4,8 @@ import * as S from './styles'
 import * as yup from 'yup'
 import { useYupValidationResolver } from 'hooks/useYupValidationResolver'
 import LoginButton from 'components/LoginButton'
+import Checkbox from 'components/Checkbox'
+import LoginProviders from 'components/LoginProviders'
 
 type FormData = {
   username: string
@@ -28,17 +30,23 @@ const Form = ({ onSubmit }: FormTypes) => {
     <S.Wrapper aria-label="login-form" onSubmit={handleSubmit(onSubmit!)}>
       <Input
         name="username"
-        placeholder="username"
+        placeholder="USERNAME"
         register={register}
         error={errors.username?.message}
       />
       <Input
         name="password"
         type="password"
-        placeholder="password"
+        placeholder="PASSWORD"
         register={register}
         error={errors.password?.message}
       />
+      <S.ProvidersContainer>
+        <LoginProviders image="/img/google.svg" />
+        <LoginProviders image="/img/google.svg" />
+        <LoginProviders image="/img/google.svg" />
+      </S.ProvidersContainer>
+      <Checkbox />
       <LoginButton aria-label="submit-button" type="submit" />
     </S.Wrapper>
   )

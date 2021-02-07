@@ -5,10 +5,10 @@ export const Wrapper = styled.button`
     border-radius: ${theme.border.radius};
     border: 1px solid ${theme.colors.secondary};
     background-color: transparent;
-    width: 3.4rem;
-    height: 3.4rem;
+    width: 6.4rem;
+    height: 6.4rem;
     outline: none;
-    padding: 0.5rem;
+    padding: 1rem;
     cursor: pointer;
 
     &:hover {

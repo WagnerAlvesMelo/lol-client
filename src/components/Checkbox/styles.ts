@@ -58,6 +58,8 @@ export const Wrapper = styled.div<CheckboxProps>`
   ${({ theme, isChecked }) => css`
     display: flex;
     align-items: center;
+    margin-top: ${theme.spacings.small};
+    margin-bottom: ${theme.spacings.small};
     ${isChecked && wrapperModifiers.checked(theme)}
   `}
 `

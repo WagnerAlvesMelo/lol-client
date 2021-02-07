@@ -7,7 +7,7 @@ export const Wrapper = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2.4rem;
+    height: 4.8rem;
     width: 100%;
     background-color: ${theme.colors.mainBg};
     cursor: pointer;
@@ -19,8 +19,8 @@ export const Wrapper = styled.button`
 `
 
 export const IconWrapper = styled.div`
-  height: 1.4rem;
-  width: 1.4rem;
+  height: 2rem;
+  width: 2rem;
 
   img {
     width: 100%;

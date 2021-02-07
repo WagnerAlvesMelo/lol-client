@@ -8,6 +8,7 @@ const inputModifiers = {
 }
 export const Wrapper = styled.div`
   ${({ theme }) => css`
+    margin-bottom: ${theme.spacings.xsmall};
     span {
       font-size: ${theme.font.sizes.small};
       color: ${theme.colors.red};
@@ -21,7 +22,7 @@ export const Wrapper = styled.div`
 
 export const Input = styled.input<InputProps>`
   ${({ theme, error }) => css`
-    width: min(30rem, 100%);
+    width: min(60rem, 100%);
     height: 4.8rem;
     border: none;
     outline: none;
@@ -33,6 +34,7 @@ export const Input = styled.input<InputProps>`
 
     &::placeholder {
       color: ${theme.colors.primary};
+      font-weight: ${theme.font.bold};
     }
 
     ${error && inputModifiers.error(theme)}

@@ -5,10 +5,10 @@ exports[`<LoginButton /> should render the heading 1`] = `
   border-radius: 0.4rem;
   border: 1px solid #EDEDED;
   background-color: transparent;
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 6.4rem;
+  height: 6.4rem;
   outline: none;
-  padding: 0.5rem;
+  padding: 1rem;
   cursor: pointer;
 }
 
